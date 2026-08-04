@@ -20,6 +20,7 @@ would not show a stranger.
 | `products/<handle>.jpg` | Public storefront product photos, one per product handle | Seeded from the public product-catalog snapshot; refreshed by the publish wrapper |
 | `emails/<slug>-<sha8>.png` | Rendered screenshots of publicly sent 437 emails, content-addressed | Klaviyo studio render pipeline via the publish wrapper |
 | `previews/<ad_id>.jpg` | Full rendered ad unit (identity header, copy, media/poster, CTA card) per publicly served ad | Ad-preview screenshot job (fast-follow) |
+| `social/<media_id>.jpg` | Normalized cover/poster for a public first-party 437 Instagram feed post | Organic-social visual sync |
 
 ## Conventions
 
@@ -32,6 +33,9 @@ would not show a stranger.
 - Producers commit with machine identities and push immediately after
   capture; a file that is not pushed does not exist as far as consumers
   are concerned.
+- `social/` contains only feed media owned and publicly posted by 437. It
+  excludes stories, DMs, drafts, comments, private/embargoed media, and
+  creator UGC that is not a first-party 437 post.
 - Keep files reasonably sized (target < 1 MB per image). raw GitHub
   serves large files slowly and some consumers cap fetch sizes.
 
